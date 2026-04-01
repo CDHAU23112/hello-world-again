@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng Huy - Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: white;
+      padding: 50px 50px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 20px;
+    }
+
+    #profileImage {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.9);
+      color: #1e3a8a;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+    .header .subtitle {
+      font-size: 1.35rem;
+      opacity: 0.95;
+    }
+
+    .contact-bar {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .contact-bar a {
+      color: white;
+      text-decoration: none;
+    }
+    .contact-bar a:hover { text-decoration: underline; }
+
+    .main-content {
+      padding: 45px 50px;
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 55px;
+    }
+
+    @media (max-width: 768px) {
+      .main-content { grid-template-columns: 1fr; gap: 40px; padding: 30px 25px; }
+      .header { padding: 40px 25px 30px; }
+    }
+
+    h2 {
+      color: #1e40af;
+      border-bottom: 3px solid #dbeafe;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      font-size: 1.55rem;
+    }
+
+    .sidebar h3 {
+      color: #1e3a8a;
+      margin: 25px 0 12px;
+      font-size: 1.3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      bottom: 0;
+      width: 3px;
+      background: #bfdbfe;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 38px;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      background: #3b82f6;
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #bfdbfe;
+    }
+
+    .date { color: #555; font-weight: 500; margin-bottom: 4px; }
+    .skill-tag {
+      background: #e0f2fe;
+      color: #1e40af;
+      padding: 6px 16px;
+      border-radius: 25px;
+      font-size: 0.98rem;
+      display: inline-block;
+      margin: 4px 4px 4px 0;
+    }
+
+    .footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 18px;
+      color: #555;
+      font-size: 0.92rem;
+    }
+
+    .upload-section {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .upload-section button {
+      background: #1e40af;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="profile-container">
+      <img id="profileImage" src="https://via.placeholder.com/180x180/1e3a8a/ffffff?text=Your+Photo" alt="Profile Picture">
+      <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">📷</button>
+      <input type="file" id="imageUpload" accept="image/*" style="display:none;" onchange="uploadImage(event)">
+    </div>
+
+    <h1>Đăng Huy</h1>
+    <div class="subtitle">Undergraduate Student • Asia University, Taiwan</div>
+
+    <div class="contact-bar">
+      <a href="mailto:your.email@example.com">your.email@example.com</a>
+      <a href="tel:+886912345678">+886 912 345 678</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+    </div>
+
+    <div class="upload-section">
+      <button onclick="removeImage()">Remove Profile Picture</button>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <h3>Personal Info</h3>
+        <p>Student ID: 111021140<br>
+        Nationality: Vietnamese<br>
+        Location: Taichung, Taiwan</p>
+      </div>
+
+      <div>
+        <h3>Education</h3>
+        <strong>Asia University</strong><br>
+        Bachelor of [Your Department/Major]<br>
+        2022 – 2026 (Expected)<br>
+        GPA: X.XX / 4.0
+      </div>
+
+      <div>
+        <h3>Languages</h3>
+        <p>Vietnamese — Native<br>
+           English — Intermediate<br>
+           Chinese — Basic</p>
+      </div>
+
+      <div>
+        <h3>Skills</h3>
+        <div>
+          <span class="skill-tag">HTML • CSS • JavaScript</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag">Figma / Canva</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <section>
+        <h2>Objective</h2>
+        <p>Motivated student at Asia University seeking internship or entry-level opportunities in [your field]. Eager to apply academic knowledge, project experience, and strong learning ability to real-world challenges.</p>
+      </section>
+
+      <section>
+        <h2>Experience & Projects</h2>
+        <div class="timeline" style="position:relative;">
+          <!-- Add your experiences here (same as previous version) -->
+          <div class="timeline-item">
+            <div class="date">2025 – Present</div>
+            <strong>Personal Portfolio Website</strong>
+            <p>Designed and developed this responsive resume website using HTML, CSS, and JavaScript with image upload feature.</p>
+          </div>
+          <!-- Add more timeline items as needed -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    Student ID: 111021140 • Asia University, Taiwan • Last updated: March 2026
+  </footer>
+</div>
+
+<script>
+  // Load saved image on page load
+  function loadImage() {
+    const savedImage = localStorage.getItem('resumeProfileImage');
+    if (savedImage) {
+      document.getElementById('profileImage').src = savedImage;
+    }
+  }
+
+  // Upload and save image
+  function uploadImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById('profileImage');
+      img.src = e.target.result;
+      localStorage.setItem('resumeProfileImage', e.target.result); // save to browser
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Remove image
+  function removeImage() {
+    if (confirm("Remove profile picture?")) {
+      document.getElementById('profileImage').src = "https://via.placeholder.com/180x180/1e3a8a/ffffff?text=Your+Photo";
+      localStorage.removeItem('resumeProfileImage');
+    }
+  }
+
+  // Load image when page opens
+  window.onload = loadImage;
+</script>
+
+</body>
+</html>
